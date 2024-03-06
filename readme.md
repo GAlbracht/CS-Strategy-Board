@@ -7,3 +7,8 @@ How to run:
 cd to strategy-board
 npm install
 npm start
+
+
+-homepage
+-login/signup
+-landing
