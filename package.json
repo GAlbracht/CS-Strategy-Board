@@ -1,0 +1,23 @@
+{
+  "name": "cs-strategy-board",
+  "version": "1.0.0",
+  "description": "todo:\r functional requirements with admin cases from use case document here -https://www.projectmanagementdocs.com/template/project-documents/use-case-document/\r video\r html mockups of all pages",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GAlbracht/CS-Strategy-Board.git"
+  },
+  "author": "Ryan Secrest, Garrett Albracht",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GAlbracht/CS-Strategy-Board/issues"
+  },
+  "homepage": "https://github.com/GAlbracht/CS-Strategy-Board#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
