@@ -1,23 +1,37 @@
-footer.grid-container {
-    display: grid;
-}
-
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #5e5c5c;
+    background: #43C6AC;
+    background: -webkit-linear-gradient( #191654, #43C6AC);  
+    background: linear-gradient( #191654, #43C6AC); 
 }
+
+a[href] {
+    color: inherit; 
+    text-decoration: inherit; 
+}
+
+
+
+.container {
+    margin-top:2%;
+    position: relative; 
+    margin-right: 7%;
+    margin-left: 7%;
+    border: 5px solid rgba(245, 245, 220, 0.4);
+    border-radius: 30px;
+}
+
 
 nav {
     background: linear-gradient(to right, #007bff 0%, #00dbde 100%);
     width: 100%;
     text-align: center;
-    padding: 20px;
+    padding: 30px;
 }
 
 nav ul {
     list-style-type: none;
-    display: inline-block; 
-    text-align: left; 
+    margin: 0;
 }
 
 nav ul li {
@@ -30,8 +44,8 @@ nav ul li a {
     color: white;
     font-size: 20px;
     font-weight: bold;
-    padding: 10px 15px; 
-    border-radius: 30px; 
+    padding: 10px 15px;
+    border-radius: 30px;
     background: rgba(255, 255, 255, 0.3);
 }
 

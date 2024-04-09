@@ -1,23 +1,39 @@
-footer.grid-container {
-    display: grid;
-}
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #5e5c5c;
+    background: #43C6AC; 
+    background: -webkit-linear-gradient( #191654, #43C6AC);  
+    background: linear-gradient( #191654, #43C6AC); 
 }
+
+a[href] {
+    color: inherit; 
+    text-decoration: inherit; 
+}
+
+
+
+.container {
+    margin-top:2%;
+    position: relative; 
+    margin-right: 7%;
+    margin-left: 7%;
+    border: 5px solid rgba(245, 245, 220, 0.4); 
+    border-radius: 30px;
+
+}
+
 
 nav {
     background: linear-gradient(to right, #007bff 0%, #00dbde 100%);
     width: 100%;
     text-align: center;
-    padding: 20px;
+    padding: 30px;
 }
 
 nav ul {
     list-style-type: none;
-    display: inline-block; 
-    text-align: left; 
+    margin: 0; 
 }
 
 nav ul li {
@@ -30,11 +46,105 @@ nav ul li a {
     color: white;
     font-size: 20px;
     font-weight: bold;
-    padding: 10px 15px; 
-    border-radius: 30px; 
+    padding: 10px 15px;
+    border-radius: 30px;
     background: rgba(255, 255, 255, 0.3);
+    
 }
+
+
+
+.map-headers {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 10px; 
+    align-items: center; 
+    justify-content: flex-start; 
+    flex-direction: column;
+    
+}
+
 
 nav ul li a:hover {
     background: rgba(255, 255, 255, 0.6);
+}
+
+.map {
+    display: flex;
+    justify-content: center;
+    max-height: 40%;
+    margin-bottom: 5%;
+    position: relative;
+}
+
+.map h2{
+    font-size: 3em;
+}
+.map h3{
+    font-size: 2em;
+}
+
+
+.map img {
+    max-width: 40%;
+    flex: 0 1 auto; 
+}
+
+.map ul {
+    list-style-type: none;
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    width: 20%;
+    height: 50%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    padding: 20px;
+    margin: 0;
+    box-sizing: border-box;
+    border: 5px solid black;
+    border-radius: 30px;
+    justify-content: center;
+    text-align: center;
+    justify-items: center;
+}
+
+
+.map h2:hover,
+.map h3:hover,
+.map li:hover {
+    color: white;
+}
+
+.map li:hover,
+.gallery img:hover,
+.gallery figcaption:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.gallery img:hover figcaption:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, .5fr);
+    grid-template-rows: repeat(4, 15vw);
+    grid-row-gap: 3% ;
+}
+    
+.gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+ 
+.gallery figcaption{ 
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0.5em;
 }
