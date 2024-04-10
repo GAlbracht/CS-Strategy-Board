@@ -1,3 +1,9 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: #43C6AC; 
+    background: -webkit-linear-gradient( #191654, #43C6AC);  
+    background: linear-gradient( #191654, #43C6AC); 
+}
 .gallery img:hover,
 .gallery figcaption:hover {
     background: rgba(255, 255, 255, 0.6);
@@ -48,7 +54,7 @@
 }
 
 .map-entry {
-    background-color: #f0f0f0;
+    background-color: #504f4f;
     border: 1px solid #ddd;
     padding: 15px;
 }
@@ -75,7 +81,46 @@
     left: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 5px;
     text-align: center;
+}
+
+nav {
+    background: linear-gradient(to right, #007bff 0%, #00dbde 100%);
+    width: 100%;
+    text-align: center;
+    padding: 30px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0; 
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.3);
+    
+}
+
+.map-subsection:hover {
+    transform: scale(1.05); 
+    z-index: 10; 
+}
+
+.map-subsection img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
 }

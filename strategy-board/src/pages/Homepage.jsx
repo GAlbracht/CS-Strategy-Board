@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Homepage.css';
 
+
+
+const handleEmailChange = (e) => {
+  //setEmail();
+};
+
+const handlePasswordChange = (e) => {
+  //setPassword();
+};
+
+const handleSubmit = (e) => {
+};
+
 const HomePage = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
   return (
+    
     <div className="homepage">
       <nav className="navigation">
         <ul>
@@ -17,15 +33,19 @@ const HomePage = () => {
         <h1>CS Strategy Board</h1>
       </header>
       
-      <div className="form-group">
-        <label htmlFor="login">Login:</label>
-        <textarea id="login" name="login" rows="4" cols="50"></textarea> 
-      </div>
-      
-      <div className="form-group">
-        <label htmlFor="signup">Signup:</label>
-        <textarea id="signup" name="signup" rows="4" cols="50"></textarea>
-      </div>
+      <form onSubmit={handleSubmit} className="form">
+        <h2>Login</h2>
+        <div className="form-group">
+            <label>Email:</label>
+            <input type="email" value={email} onChange={handleEmailChange} />
+        </div>
+        <div className="form-group">
+            <label>Password:</label>
+            <input type="password" value={password} onChange={handlePasswordChange} />
+        </div>
+    <button type="submit">Sign Up</button>
+</form>
+
     </div>
   );
 }
