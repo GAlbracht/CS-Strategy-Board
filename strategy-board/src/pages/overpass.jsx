@@ -68,16 +68,10 @@ function OverpassPage() {
                     key={item.id} 
                     src={item.imageUrl} 
                     alt={item.name} 
-                    style={{ position: 'absolute', left: `${item.x}px`, top: `${item.y}px`, width: '50px' }} // Example size, adjust as needed
+                    style={{ position: 'absolute', left: `${item.x}px`, top: `${item.y}px`, width: '50px' }}
                     className="dropped-item"
                   />
                 ))}
-
-        </div>
-            
-
-
-
           <div className="map-headers">
             <Link to="/clear"><h2>Clear</h2></Link>
             <Link to="/overpass"><h2>Overpass</h2></Link>
@@ -87,6 +81,12 @@ function OverpassPage() {
             <Link to="/nuke"><h3>Nuke</h3></Link>
             <Link to="/train"><h3>Train</h3></Link>
           </div>
+        </div>
+            
+
+
+
+
 
 
           
@@ -110,7 +110,7 @@ function OverpassPage() {
           {galleryImages.map(number => (
             <figure key={number} className={`gallery__item gallery__item--${number}`}>
               <a href="#"><img src="images/Cs2_overpass_radar.webp" className="gallery__img" alt={`Image ${number}`} /></a>
-              <figcaption><a href="#">Image {number}</a></figcaption>
+              <figcaption><a href="#">Tactic {number}</a></figcaption>
             </figure>
           ))}
         </div>
