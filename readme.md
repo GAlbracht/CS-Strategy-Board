@@ -4,7 +4,7 @@ video
 html mockups of all pages
 
 How to run: 
-cd to strategy-board
+cd into strategy-board
 npm install
 npm start
 

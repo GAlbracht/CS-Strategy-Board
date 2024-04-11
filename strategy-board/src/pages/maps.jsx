@@ -6,10 +6,10 @@ const maps = [
     {
         name: 'inferno',
         description: 'This is the first map.',
-        imageUrl: './images/Cs2_overpass_radar.webp',
+        imageUrl: './images/inferno.webp',
         subsections: [
-            { name: 'A Site', imageUrl: './images/logo192.png' },
-            { name: 'B Site', imageUrl: './images/logo192.png' },
+            { name: 'A Site', imageUrl: './images/inferno-a-site.jpg' },
+            { name: 'B Site', imageUrl: './images/inferno-b-site.jpg' },
         ],
     },
     {
@@ -24,7 +24,7 @@ const maps = [
     {
         name: 'dust2',
         description: 'This is the third map.',
-        imageUrl: './images/Cs2_overpass_radar.webp',
+        imageUrl: 'images/dust2.png',
         subsections: [
             { name: 'A Site', imageUrl: './images/logo192.png' },
             { name: 'B Site', imageUrl: './images/logo192.png' },
@@ -33,7 +33,7 @@ const maps = [
     {
         name: 'mirage',
         description: 'This is the fourth map.',
-        imageUrl: './images/Cs2_overpass_radar.webp',
+        imageUrl: './images/mirage.png',
         subsections: [
             { name: 'A Site', imageUrl: './images/logo192.png' },
             { name: 'B Site', imageUrl: './images/logo192.png' },
@@ -42,7 +42,7 @@ const maps = [
     {
         name: 'nuke',
         description: 'This is the fifth map.',
-        imageUrl: './images/Cs2_overpass_radar.webp',
+        imageUrl: './images/nuke.webp',
         subsections: [
             { name: 'A Site', imageUrl: './images/logo192.png' },
             { name: 'B Site', imageUrl: './images/logo192.png' },
@@ -51,9 +51,9 @@ const maps = [
     {
         name: 'train',
         description: 'This is the sixth map.',
-        imageUrl: './images/Cs2_overpass_radar.webp',
+        imageUrl: './images/train.png',
         subsections: [
-            { name: 'A Site', imageUrl: './images/logo192.png' },
+            { name: 'A Site', imageUrl: './images/logo192.png'},
             { name: 'B Site', imageUrl: './images/logo192.png' },
         ],
     },

@@ -9,6 +9,7 @@ import NukePage from './pages/nuke.jsx';
 import TrainPage from './pages/train.jsx';
 import Signup from './pages/signup.jsx';
 import Maps from './pages/maps.jsx';
+import SubsectionPage from './pages/subsections.jsx';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/inferno" element={<InfernoPage />} />
         <Route path="/nuke" element={<NukePage />} />
         <Route path="/train" element={<TrainPage />} />
+        <Route path="/:mapName/:subsectionName" element={<SubsectionPage />} />
       </Routes>
     </BrowserRouter>
   );

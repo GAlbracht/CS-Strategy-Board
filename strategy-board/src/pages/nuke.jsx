@@ -28,7 +28,7 @@ function NukePage() {
             <Link to="/train"><h3>Train</h3></Link>
           </div>
           
-          <img src="images/Cs2_overpass_radar.webp" alt="Overpass" />
+          <img src="images/nuke.webp" alt="nuke" />
           
           <ul>
             <li>Grenade</li>
@@ -41,7 +41,7 @@ function NukePage() {
         <div className="gallery">
           {galleryImages.map(number => (
             <figure key={number} className={`gallery__item gallery__item--${number}`}>
-              <a href="#"><img src="images/Cs2_overpass_radar.webp" className="gallery__img" alt={`Image ${number}`} /></a>
+              <a href="#"><img src="images/nuke.webp" className="gallery__img" alt={`Image ${number}`} /></a>
               <figcaption><a href="#">Image {number}</a></figcaption>
             </figure>
           ))}
