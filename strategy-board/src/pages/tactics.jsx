@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import './subsection.css';
+import './tactics.css';
 
 const youtubeLinks = {
   'a-site': 'https://www.youtube.com/embed/exampleVideoID1',
@@ -21,6 +21,7 @@ const SubsectionPage = () => {
     <div>
       <nav className="navigation">
       <ul>
+          <li><Link to="/maps"><img src='images/logo.webp' /></Link></li>
           <li><Link to="/home">Home</Link></li>
           <li><Link to="/maps">Map Directory</Link></li>
           <li><Link to="/login">Login</Link></li>
@@ -43,7 +44,7 @@ const SubsectionPage = () => {
         )}
       </div>
       <div class = 'text'>
-      <h4>Subsection: {subsectionName} example text, which may be a description of the salary</h4>
+      <h4>Subsection: {subsectionName} example text of video description</h4>
       </div>
     </div>
 

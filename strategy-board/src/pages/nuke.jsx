@@ -9,6 +9,7 @@ function NukePage() {
     <div>
       <nav>
         <ul>
+          <li><Link to="/maps"><img src='images/logo.webp' /></Link></li>
           <li><Link to="/home">Home</Link></li>
           <li><Link to="/maps">Map Directory</Link></li>
           <li><Link to="/login">Login</Link></li>
@@ -19,6 +20,7 @@ function NukePage() {
       <div className="container">
         <div className="map">
           <div className="map-headers">
+            
             <Link to="/clear"><h2>Clear</h2></Link>
             <Link to="/overpass"><h2>Overpass</h2></Link>
             <Link to="/mirage"><h3>Mirage</h3></Link>

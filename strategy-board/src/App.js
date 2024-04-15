@@ -9,7 +9,7 @@ import NukePage from './pages/nuke.jsx';
 import TrainPage from './pages/train.jsx';
 import Signup from './pages/signup.jsx';
 import Maps from './pages/maps.jsx';
-import SubsectionPage from './pages/subsections.jsx';
+import SubsectionPage from './pages/tactics.jsx';
 
 function App() {
   return (

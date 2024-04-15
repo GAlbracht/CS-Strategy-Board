@@ -17,7 +17,11 @@ function OverpassPage() {
     { id: generateId(), name: 'Flashbang', imageUrl: '/images/flashbang.webp' },
     { id: generateId(), name: 'Smoke', imageUrl: '/images/smoke.png' },
   ];
-  
+  const tactics = [
+    { name: 'Smoke Execution', imageUrl: '/images/tactic-smoke.webp' },
+    { name: 'Flash Entry', imageUrl: '/images/tactic-flash.webp' },
+    { name: 'Molotov Strategy', imageUrl: '/images/tactic-molotov.webp' },
+];
 
     const [droppedItems, setDroppedItems] = useState([]);
   
@@ -46,6 +50,7 @@ function OverpassPage() {
     <div>
       <nav>
         <ul>
+          <li><Link to="/maps"><img src='images/logo.webp' /></Link></li>
           <li><Link to="/home">Home</Link></li>
           <li><Link to="/maps">Map Directory</Link></li>
           <li><Link to="/login">Login</Link></li>
@@ -107,11 +112,15 @@ function OverpassPage() {
         </div>
 
         <div className="gallery">
-          {galleryImages.map(number => (
-            <figure key={number} className={`gallery__item gallery__item--${number}`}>
-              <a href="#"><img src="images/Cs2_overpass_radar.webp" className="gallery__img" alt={`Image ${number}`} /></a>
-              <figcaption><a href="#">Tactic {number}</a></figcaption>
-            </figure>
+                    {tactics.map((tactic, index) => (
+                        <figure key={index} className={`gallery__item gallery__item--${index + 1}`}>
+                            <Link to={`/tactics/${tactic.name.toLowerCase().replace(/ /g, '-')}`}>
+                                <img src={tactic.imageUrl} className="gallery__img" alt={tactic.name} />
+                            </Link>
+                            <figcaption>
+                                <Link to={`/tactics/${tactic.name.toLowerCase().replace(/ /g, '-')}`}>{tactic.name}</Link>
+                            </figcaption>
+                        </figure>
           ))}
         </div>
       </div>

@@ -23,6 +23,7 @@ const HomePage = () => {
     <div className="homepage">
       <nav className="navigation">
         <ul>
+          <li><Link to="/maps"><img src='images/logo.webp' /></Link></li>
           <li><Link to="/home">Home</Link></li>
           <li><Link to="/maps">Map Directory</Link></li>
           <li><Link to="/login">Login</Link></li>
