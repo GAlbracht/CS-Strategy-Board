@@ -21,6 +21,9 @@ const HomePage = () => {
   return (
     
     <div className="homepage">
+      <header>
+        <title>CS Strategy Board</title>
+      </header>
       <nav className="navigation">
         <ul>
           <li><Link to="/maps"><img src='images/logo.webp' /></Link></li>
@@ -30,9 +33,7 @@ const HomePage = () => {
           <li><Link to="/signup">Signup</Link></li>
         </ul>
       </nav>
-      <header>
-        <h1>CS Strategy Board</h1>
-      </header>
+      
       
       <form onSubmit={handleSubmit} className="form">
         <h2>Login</h2>
@@ -44,8 +45,8 @@ const HomePage = () => {
             <label>Password:</label>
             <input type="password" value={password} onChange={handlePasswordChange} />
         </div>
-    <button type="submit">Sign Up</button>
-</form>
+        <button type="submit">Sign Up</button>
+      </form>
 
     </div>
   );

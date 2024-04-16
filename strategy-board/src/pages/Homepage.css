@@ -1,8 +1,13 @@
+#root {
+    height: 100%;
+}
+html, body, #app, #app>div {
+    height: 100%;
+}
 body {
     font-family: 'Arial', sans-serif;
-    background: #43C6AC;
-    background: -webkit-linear-gradient( #191654, #43C6AC);  
     background: linear-gradient( #191654, #43C6AC); 
+    background-attachment: fixed;
 }
 
 a[href] {
@@ -11,6 +16,12 @@ a[href] {
 }
 
 
+.homepage {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient( #191654, #43C6AC); 
+    background-attachment: fixed;
+    height: 100%;
+}
 
 .container {
     margin-top:2%;
