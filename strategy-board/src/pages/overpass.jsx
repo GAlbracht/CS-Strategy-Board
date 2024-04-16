@@ -26,20 +26,36 @@ function OverpassPage() {
     const [droppedItems, setDroppedItems] = useState([]);
   
     const handleDragStart = (event, item) => {
-      event.dataTransfer.setData('application/reactflow', JSON.stringify(item));
+      const objectToTransfer = { ...item };
+      event.dataTransfer.setData('application/reactflow', JSON.stringify(objectToTransfer));
       event.dataTransfer.effectAllowed = 'move';
     };
   
     const handleDrop = (event) => {
       event.preventDefault();
-      const item = JSON.parse(event.dataTransfer.getData('application/reactflow'));
-    
+      const data = event.dataTransfer.getData('application/reactflow');
+      const item = JSON.parse(data);
+  
       const rect = dropZoneRef.current.getBoundingClientRect();
-      const x = event.clientX - rect.left; //x position
-      const y = event.clientY - rect.top;  //y position
-    
-      setDroppedItems((currentItems) => [...currentItems, { ...item, x, y, id: generateId() }]);
-    };
+  
+      const dragImageWidth = 50;
+      const dragImageHeight = 50; 
+  
+      const x = event.clientX + 300 - rect.left - dragImageWidth / 2;
+      const y = event.clientY - rect.top - dragImageHeight / 2;
+  
+      //check if existing 
+      const existingItemIndex = droppedItems.findIndex((di) => di.id === item.id);
+      if (existingItemIndex !== -1) {
+          //update position of an existing item
+          const updatedItems = [...droppedItems];
+          updatedItems[existingItemIndex] = { ...item, x, y };
+          setDroppedItems(updatedItems);
+      } else {
+          //add a new item
+          setDroppedItems(currentItems => [...currentItems, { ...item, x, y, id: generateId() }]);
+      }
+  };
     
   
     const handleDragOver = (event) => {
@@ -73,13 +89,15 @@ function OverpassPage() {
                     key={item.id} 
                     src={item.imageUrl} 
                     alt={item.name} 
+                    draggable
+                    onDragStart={(event) => handleDragStart(event, item, true)}
                     style={{ position: 'absolute', left: `${item.x}px`, top: `${item.y}px`, width: '50px' }}
                     className="dropped-item"
                   />
                 ))}
           <div className="map-headers">
             <Link to="/clear"><h2>Clear</h2></Link>
-            <Link to="/overpass"><h2>Overpass</h2></Link>
+            <Link to="/overpass"><h3>Overpass</h3></Link>
             <Link to="/mirage"><h3>Mirage</h3></Link>
             <Link to="/dust2"><h3>Dust 2</h3></Link>
             <Link to="/inferno"><h3>Inferno</h3></Link>
@@ -87,13 +105,6 @@ function OverpassPage() {
             <Link to="/train"><h3>Train</h3></Link>
           </div>
         </div>
-            
-
-
-
-
-
-
           
           <ul>
               <div className="items-list">
