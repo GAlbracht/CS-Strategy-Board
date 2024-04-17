@@ -19,7 +19,6 @@ const HomePage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
   return (
-    
     <div className="homepage">
       <header>
         <title>CS Strategy Board</title>
@@ -29,7 +28,6 @@ const HomePage = () => {
           <li><Link to="/maps"><img src='images/logo.webp' /></Link></li>
           <li><Link to="/home">Home</Link></li>
           <li><Link to="/maps">Map Directory</Link></li>
-          <li><Link to="/login">Login</Link></li>
           <li><Link to="/signup">Signup</Link></li>
         </ul>
       </nav>
@@ -45,7 +43,7 @@ const HomePage = () => {
             <label>Password:</label>
             <input type="password" value={password} onChange={handlePasswordChange} />
         </div>
-        <button type="submit">Sign Up</button>
+        <Link to="/signup"><button type="submit">Sign Up</button></Link>
       </form>
 
     </div>

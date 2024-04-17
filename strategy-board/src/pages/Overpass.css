@@ -26,6 +26,7 @@ a[href] {
 
 nav {
     background: linear-gradient(to right, #007bff 0%, #00dbde 100%);
+    display: inline-block;
     width: 100%;
     text-align: center;
     padding: 30px;
@@ -51,8 +52,12 @@ nav ul li a {
     background: rgba(255, 255, 255, 0.3);
     
 }
-
-
+nav img {
+    width: auto;
+    height: 60px;
+    float:left;
+    
+}
 
 .map-headers {
     flex-wrap: wrap; 
@@ -69,7 +74,6 @@ nav ul li a:hover {
 }
 
 .map {
-    display: flex;
     justify-content: center;
     max-height: 40%;
     margin-bottom: 5%;
@@ -160,8 +164,7 @@ nav ul li a:hover {
   
   .draggable-item {
     
-    width: 100%;
-    height: 50px;
+    scale: 3;
     display: flex;
     justify-content: center;
     align-items: center;

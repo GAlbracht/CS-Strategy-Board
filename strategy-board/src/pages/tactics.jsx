@@ -1,53 +1,51 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import mapsData from './mapsdata'; // Adjust the path as necessary
 import './tactics.css';
 
-const youtubeLinks = {
-  'a-site': 'https://www.youtube.com/embed/exampleVideoID1',
-  'b-site': 'https://www.youtube.com/embed/exampleVideoID2',
-  'long-a': 'https://www.youtube.com/embed/exampleVideoID3',
-  'catwalk': 'https://www.youtube.com/embed/exampleVideoID4',
-};
-
 const SubsectionPage = () => {
-  let { subsectionName } = useParams();
-  subsectionName = subsectionName.toLowerCase();
+  const { mapName, subsectionName } = useParams();
 
-  // Find the YouTube video URL based on the subsection name
-  const videoUrl = youtubeLinks[subsectionName];
+  const mapNameNormalized = mapName.toLowerCase();
+  const subsectionNameNormalized = subsectionName.split('-').join(' ');
+  console.log(subsectionNameNormalized);
 
+  const map = mapsData.find(m => m.name.toLowerCase() === mapNameNormalized);
+
+
+  const tactic = map.map.tactics.find(t => t.name === subsectionNameNormalized);
+
+
+  const videoUrl = tactic.videoUrl;
+  console.log("Video URL:", tactic.videoUrl);
   return (
     <div>
       <nav className="navigation">
-      <ul>
+        <ul>
           <li><Link to="/maps"><img src='images/logo.webp' /></Link></li>
           <li><Link to="/home">Home</Link></li>
           <li><Link to="/maps">Map Directory</Link></li>
-          <li><Link to="/login">Login</Link></li>
           <li><Link to="/signup">Signup</Link></li>
-      </ul>
+        </ul>
       </nav>
-      <div class = 'video'>
+      <div className='video'>
         {videoUrl ? (
           <iframe
             width="560"
             height="315"
             src={videoUrl}
             title="YouTube video player"
-            frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         ) : (
-          <p>Video not found for this subsection.</p>
+          <p>Video not found for this tactic.</p>
         )}
       </div>
-      <div class = 'text'>
-      <h4>Subsection: {subsectionName} example text of video description</h4>
+      <div className='text'>
+        <h4>Subsection: {tactic.name} - example text of video description</h4>
       </div>
     </div>
-
   );
 };
 
