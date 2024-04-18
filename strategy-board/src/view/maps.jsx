@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import mapsData from './mapsdata.js';
+import mapsData from '../model/mapsdata.js';
 import './maps.css';
 
 const Maps = () => {

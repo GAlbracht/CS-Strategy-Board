@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import mapsData from './mapsdata'; // Adjust the path as necessary
+import mapsData from '../model/mapsdata'; // Adjust the path as necessary
 import './tactics.css';
 
 const SubsectionPage = () => {

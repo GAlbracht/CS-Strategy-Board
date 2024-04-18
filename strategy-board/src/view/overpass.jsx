@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './Overpass.css';
-import mapsData from './mapsdata';
+import mapsData from '../model/mapsdata';
 
 function OverpassPage() {
   const { mapName } = useParams();

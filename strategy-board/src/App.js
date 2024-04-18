@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route,Navigate } from 'react-router-dom';
-import HomePage from './pages/Homepage.jsx'; 
-import OverpassPage from './pages/overpass.jsx';
-import Signup from './pages/signup.jsx';
-import Maps from './pages/maps.jsx';
-import SubsectionPage from './pages/tactics.jsx';
-import AdminPage from './pages/admin.jsx';
+import HomePage from './view/Homepage.jsx'; 
+import OverpassPage from './view/overpass.jsx';
+import Signup from './view/signup.jsx';
+import Maps from './view/maps.jsx';
+import SubsectionPage from './view/tactics.jsx';
+import AdminPage from './view/admin.jsx';
 
 function App() {
   return (
