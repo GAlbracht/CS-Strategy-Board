@@ -12,6 +12,8 @@ const Maps = () => {
             <li><Link to="/home">Home</Link></li>
             <li><Link to="/maps">Map Directory</Link></li>
             <li><Link to="/signup">Signup</Link></li>
+            {/* if admin */}
+            {isAdmin && <li><Link to="/admin-upload"><img src='Upload' /></Link></li>}
           </ul>
         </nav>
         <div className="maps-overview">

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './signup.css';
 
 function AdminPage() {
     const [tactic, setTactic] = useState({
