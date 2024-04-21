@@ -19,12 +19,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "server": "node Backend.js",
+    "server": "node ./src/Backend.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "heroku-postbuild": "npm run build",
-    "start:prod": "node Backend.js"
+    "start:prod": "node ./src/Backend.js"
   },
   "eslintConfig": {
     "extends": [
