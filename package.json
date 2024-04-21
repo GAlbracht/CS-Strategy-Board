@@ -4,7 +4,7 @@
   "description": "todo:\r functional requirements with admin cases from use case document here -https://www.projectmanagementdocs.com/template/project-documents/use-case-document/\r video\r html mockups of all pages",
   "main": "index.js",
   "scripts": {
-    "start:prod": "node Backend.js"
+    "start:prod": "node ./strategy-board/src/Backend.js"
   },
   "repository": {
     "type": "git",
