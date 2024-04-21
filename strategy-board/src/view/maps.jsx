@@ -4,6 +4,7 @@ import mapsData from '../model/mapsdata.js';
 import './maps.css';
 
 const Maps = () => {
+    const isAdmin = true; // set to true to show admin upload button
     return (
       <div>
         <nav>
