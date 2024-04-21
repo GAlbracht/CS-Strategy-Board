@@ -4,7 +4,7 @@
   "description": "todo:\r functional requirements with admin cases from use case document here -https://www.projectmanagementdocs.com/template/project-documents/use-case-document/\r video\r html mockups of all pages",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:prod": "node Backend.js"
   },
   "repository": {
     "type": "git",
