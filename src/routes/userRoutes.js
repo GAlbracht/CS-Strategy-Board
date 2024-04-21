@@ -26,4 +26,9 @@ router.post('/login', async (req, res) => {
     res.send({ token });
 });
 
+router.get('/users', async (req, res) => {
+    const users = await User.find();
+    res.send(users);
+}
+
 export default router;
