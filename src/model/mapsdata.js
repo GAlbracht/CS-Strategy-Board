@@ -8,12 +8,12 @@ const mapsData = [
           {
             name: 'Smoke Execution',
             imageUrl: 'images/inferno.webp',
-            videoUrl: 'https://www.youtube.com/watch?v=example-inferno-smoke'
+            videoUrl: 'https://www.youtube.com/embed/3TP7jIDzMpY?si=N77fCXVQFjFPZTyh'
           },
           {
             name: 'Flash Entry',
             imageUrl: 'images/inferno.webp',
-            videoUrl: 'https://www.youtube.com/watch?v=example-inferno-flash'
+            videoUrl: 'https://www.youtube.com/embed/3TP7jIDzMpY?si=N77fCXVQFjFPZTyh'
           }
         ]
       }
@@ -46,12 +46,12 @@ const mapsData = [
           {
             name: 'Mid to B Smoke',
             imageUrl: 'images/dust2.png',
-            videoUrl: 'https://www.youtube.com/watch?v=example-dust2-mid-to-b'
+            videoUrl: 'https://www.youtube.com/embed/3TP7jIDzMpY?si=N77fCXVQFjFPZTyh'
           },
           {
             name: 'Catwalk Assault',
             imageUrl: 'images/dust2.png',
-            videoUrl: 'https://www.youtube.com/watch?v=example-dust2-catwalk'
+            videoUrl: 'https://www.youtube.com/embed/3TP7jIDzMpY?si=N77fCXVQFjFPZTyh'
           }
         ]
       }
@@ -65,12 +65,12 @@ const mapsData = [
           {
             name: 'Window Smoke from T Spawn',
             imageUrl: '/images/mirage.png',
-            videoUrl: 'https://www.youtube.com/watch?v=example-mirage-window'
+            videoUrl: 'https://www.youtube.com/embed/3TP7jIDzMpY?si=N77fCXVQFjFPZTyh'
           },
           {
             name: 'A Site Smoke Setup',
             imageUrl: '/images/mirage.png',
-            videoUrl: 'https://www.youtube.com/watch?v=example-mirage-a-smoke'
+            videoUrl: 'https://www.youtube.com/embed/3TP7jIDzMpY?si=N77fCXVQFjFPZTyh'
           }
         ]
       }
@@ -84,12 +84,12 @@ const mapsData = [
           {
             name: 'Outside Control with Smokes',
             imageUrl: '/images/nuke.webp',
-            videoUrl: 'https://www.youtube.com/watch?v=example-nuke-outside'
+            videoUrl: 'https://www.youtube.com/embed/3TP7jIDzMpY?si=N77fCXVQFjFPZTyh'
           },
           {
             name: 'Ramp Rush',
             imageUrl: '/images/nuke.webp',
-            videoUrl: 'https://www.youtube.com/watch?v=example-nuke-ramp'
+            videoUrl: 'https://www.youtube.com/embed/3TP7jIDzMpY?si=N77fCXVQFjFPZTyh'
           }
         ]
       }
@@ -103,12 +103,12 @@ const mapsData = [
           {
             name: 'Ivy Control',
             imageUrl: 'images/train.png',
-            videoUrl: 'https://www.youtube.com/watch?v=example-train-ivy'
+            videoUrl: 'https://www.youtube.com/embed/3TP7jIDzMpY?si=N77fCXVQFjFPZTyh'
           },
           {
             name: 'B Site Entry Smokes',
             imageUrl: 'images/train.png',
-            videoUrl: 'https://www.youtube.com/watch?v=example-train-b'
+            videoUrl: 'https://www.youtube.com/embed/3TP7jIDzMpY?si=N77fCXVQFjFPZTyh'
           }
         ]
       }
