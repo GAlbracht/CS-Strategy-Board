@@ -39,6 +39,29 @@ router.get('/maps/name/:name', async (req, res) => {
     }
 });
 
+// Update a map by ID
+router.put('/maps/:id', async (req, res) => {
+    const { id } = req.params;
+    const updateData = req.body; 
+
+    try {
+        const map = await Map.findById(id);
+        if (!map) {
+            return res.status(404).send('Map not found');
+        }
+
+        // Update the map with new data
+        Object.keys(updateData).forEach(key => {
+            map[key] = updateData[key];
+        });
+
+        await map.save();
+        res.send(map);
+    } catch (error) {
+        res.status(500).send({ message: 'Failed to update the map', error: error.toString() });
+    }
+});
+
 // Post a map
 router.post('/maps', async (req, res) => {
     try {
