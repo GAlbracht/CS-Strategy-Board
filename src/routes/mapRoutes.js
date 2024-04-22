@@ -26,6 +26,19 @@ router.get('/maps/:id', async (req, res) => {
     }
 });
 
+// Get a single map by its name
+router.get('/maps/name/:name', async (req, res) => {
+    try {
+        const map = await Map.findOne({ name: req.params.name });
+        if (!map) {
+            return res.status(404).send('Map not found');
+        }
+        res.send(map);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+
 // Post a map
 router.post('/maps', async (req, res) => {
     try {

@@ -1,20 +1,27 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Overpass.css';
-import mapsData from '../model/mapsdata';
 
 function OverpassPage() {
   const { mapName } = useParams();
   const navigate = useNavigate();
   const dropZoneRef = useRef(null);
+  const [map, setMap] = useState(null);
   const [droppedItems, setDroppedItems] = useState([]);
 
-  if (!mapName) {
-    return <div>Loading or invalid map name...</div>;
-  }
-
-  const map = mapsData.find(m => m.name.toLowerCase() === mapName.toLowerCase());
+  useEffect(() => {
+    if (mapName) {
+      axios.get(`https://cs-strategy-board-0b3c449c0c46.herokuapp.com/maps/name/${mapName}`)
+        .then(response => {
+          setMap(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching map:', error);
+          alert('Failed to load map data');
+        });
+    }
+  }, [mapName]);
 
   const handleDragStart = (event, item) => {
     const objectToTransfer = { ...item };
@@ -30,7 +37,7 @@ function OverpassPage() {
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
 
-    const newItem = { ...item, x, y, id: Date.now() }; // Use a more robust ID generation in production
+    const newItem = { ...item, x, y, id: Date.now() };
     setDroppedItems(currentItems => [...currentItems, newItem]);
   };
 
@@ -42,16 +49,20 @@ function OverpassPage() {
   const saveStrategy = async () => {
     try {
       const response = await axios.post('https://cs-strategy-board-0b3c449c0c46.herokuapp.com/strategies', {
-        mapId: map.id, // Ensure your mapsData includes IDs or fetch them appropriately
+        mapId: map.id,
         items: droppedItems,
       });
       alert('Strategy saved successfully!');
-      navigate('/strategies'); // Redirect or handle post-save actions
+      navigate('/strategies');
     } catch (error) {
       console.error('Failed to save strategy:', error);
       alert('Failed to save strategy');
     }
   };
+
+  if (!map) {
+    return <div>Loading map data...</div>;
+  }
 
   return (
     <div>
