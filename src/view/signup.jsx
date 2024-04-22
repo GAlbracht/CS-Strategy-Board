@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import './signup.css';
 
 const Signup = () => {
@@ -7,14 +8,21 @@ const Signup = () => {
     const [password, setPassword] = useState('');
 
     const handleEmailChange = (e) => {
-        //setEmail();
+        setEmail(e.target.value);
     };
 
     const handlePasswordChange = (e) => {
-        //setPassword();
+        setPassword(e.target.value);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit =  async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post('/register', { email, password });
+            console.log(response.data);
+        } catch (error) {
+            console.error('Signup error: ', error.response.data);
+        }
     };
 
     return (
