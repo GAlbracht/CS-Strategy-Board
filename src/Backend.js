@@ -17,6 +17,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
+app.use(express.static('public'));
 
 app.use(mapRoutes);
 app.use(userRoutes);
