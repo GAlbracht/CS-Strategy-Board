@@ -17,19 +17,30 @@ const Signup = () => {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Prevent the default form submit action
+        console.log("Attempting to submit form", { email, password }); // Log the values to be sent
+    
         try {
             const response = await axios.post('https://cs-strategy-board-0b3c449c0c46.herokuapp.com/register', { email, password });
-            console.log(response.data);
-            // Redirect to the home page upon successful signup
-            navigate('/home');  // Adjust the path as necessary for your routing setup
+            console.log("Response received", response.data); // Log the response from the server
+    
+            // Optionally check response status or data before redirecting
+            if (response.status === 201) {
+                console.log("Signup successful, navigating to home");
+                navigate('/home'); // Navigate on success
+            } else {
+                console.error("Unexpected response status:", response.status);
+            }
         } catch (error) {
             if (error.response) {
-                console.error('Signup error: ', error.response.data);
+                // Server responded with a status outside 2xx and provided an error
+                console.error("Signup error response:", error.response.data);
             } else if (error.request) {
-                console.error('Signup error: No response received', error.request);
+                // The request was made but no response was received
+                console.error("Signup error request not responded:", error.request);
             } else {
-                console.error('Error', error.message);
+                // Something happened in setting up the request that triggered an error
+                console.error("Signup error message:", error.message);
             }
         }
     };
