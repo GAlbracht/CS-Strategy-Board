@@ -1,9 +1,18 @@
 import mongoose from 'mongoose';
 
+const tacticItemSchema = new mongoose.Schema({
+    name: String,
+    imageUrl: String,
+    position: {
+        x: Number,
+        y: Number
+    }
+});
+
 const strategySchema = new mongoose.Schema({
-    mapId: { type: mongoose.Schema.Types.ObjectId, ref: 'Map' },
+    mapId: { type: mongoose.Schema.Types.ObjectId, ref: 'Map', required: true },
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    tactics: [{ name: String, imageUrl: String, description: String }],
+    tactics: [tacticItemSchema],
     createdAt: { type: Date, default: Date.now }
 });
 

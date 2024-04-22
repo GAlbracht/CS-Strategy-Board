@@ -1,32 +1,20 @@
 import React, { useState, useRef } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './Overpass.css';
 import mapsData from '../model/mapsdata';
 
 function OverpassPage() {
   const { mapName } = useParams();
+  const navigate = useNavigate();
   const dropZoneRef = useRef(null);
   const [droppedItems, setDroppedItems] = useState([]);
 
-
-  
   if (!mapName) {
     return <div>Loading or invalid map name...</div>;
   }
 
   const map = mapsData.find(m => m.name.toLowerCase() === mapName.toLowerCase());
-  
-
-  const generateId = (() => {
-    let count = 0;
-    return () => count++;
-  })();
-  const items = [
-    { id: generateId(), name: 'Grenade', imageUrl: '/images/grenade.webp' },
-    { id: generateId(), name: 'Molotov', imageUrl: '/images/molotov.webp' },
-    { id: generateId(), name: 'Flashbang', imageUrl: '/images/flashbang.webp' },
-    { id: generateId(), name: 'Smoke', imageUrl: '/images/smoke.png' },
-  ];
 
   const handleDragStart = (event, item) => {
     const objectToTransfer = { ...item };
@@ -39,19 +27,11 @@ function OverpassPage() {
     const data = event.dataTransfer.getData('application/reactflow');
     const item = JSON.parse(data);
     const rect = dropZoneRef.current.getBoundingClientRect();
-    const dragImageWidth = 50;
-    const dragImageHeight = 50;
-    const x = event.clientX - rect.left - dragImageWidth / 2;
-    const y = event.clientY - rect.top - dragImageHeight / 2;
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
 
-    const existingItemIndex = droppedItems.findIndex(di => di.id === item.id);
-    if (existingItemIndex !== -1) {
-      const updatedItems = [...droppedItems];
-      updatedItems[existingItemIndex] = { ...item, x, y };
-      setDroppedItems(updatedItems);
-    } else {
-      setDroppedItems(currentItems => [...currentItems, { ...item, x, y, id: generateId() }]);
-    }
+    const newItem = { ...item, x, y, id: Date.now() }; // Use a more robust ID generation in production
+    setDroppedItems(currentItems => [...currentItems, newItem]);
   };
 
   const handleDragOver = (event) => {
@@ -59,49 +39,41 @@ function OverpassPage() {
     event.dataTransfer.dropEffect = 'move';
   };
 
+  const saveStrategy = async () => {
+    try {
+      const response = await axios.post('https://cs-strategy-board-0b3c449c0c46.herokuapp.com/strategies', {
+        mapId: map.id, // Ensure your mapsData includes IDs or fetch them appropriately
+        items: droppedItems,
+      });
+      alert('Strategy saved successfully!');
+      navigate('/strategies'); // Redirect or handle post-save actions
+    } catch (error) {
+      console.error('Failed to save strategy:', error);
+      alert('Failed to save strategy');
+    }
+  };
+
   return (
     <div>
       <nav>
-      <Link to="/maps"><img src='images/logo.webp' alt="Maps" /></Link>
+        <Link to="/maps"><img src='images/logo.webp' alt="Maps" /></Link>
         <ul>
           <li><Link to="/home">Home</Link></li>
           <li><Link to="/maps">Map Directory</Link></li>
           <li><Link to="/signup">Signup</Link></li>
         </ul>
       </nav>
-
       <div className="container">
         <div className="map">
           <div className="drop-zone" ref={dropZoneRef} onDrop={handleDrop} onDragOver={handleDragOver}>
-            <img src={map.map.imageUrl} alt={map.name} />
+            <img src={map.imageUrl} alt={map.name} />
             {droppedItems.map((item) => (
-              <img key={item.id} src={item.imageUrl} alt={item.name} draggable onDragStart={(event) => handleDragStart(event, item)}
-                style={{ position: 'absolute', left: `${item.x}px`, top: `${item.y}px`, width: '50px' }} className="dropped-item" />
+              <img key={item.id} src={item.imageUrl} alt={item.name} draggable
+                style={{ position: 'absolute', left: item.x, top: item.y, width: '50px' }} />
             ))}
           </div>
-          <ul>
-          <div className="items-list">
-            {items.map((item, index) => (
-              <img key={index} src={item.imageUrl} alt={item.name} draggable onDragStart={(event) => handleDragStart(event, item)} className="draggable-item" />
-            ))}
-          </div>
-        </ul>
         </div>
-
-
-
-        <div className="gallery">
-          {map.map.tactics.map((tactic, index) => (
-            <figure key={index} className={`gallery__item gallery__item--${index + 1}`}>
-              <Link to={`/${map.name}/${tactic.name.replace(/ /g, '-')}`}>
-                <img src={tactic.imageUrl} className="gallery__img" alt={tactic.name} />
-              </Link>
-              <figcaption>
-                <Link to={`/${map.name}/${tactic.name.replace(/ /g, '-')}`}>{tactic.name}</Link>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
+        <button onClick={saveStrategy}>Save Strategy</button>
       </div>
     </div>
   );
