@@ -172,4 +172,43 @@ nav ul li a:hover {
     cursor: grab;
   }
   
+  .strategies-display {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: flex-start; 
+    align-items: center; 
+    gap: 10px; 
+    margin-top: 20px; 
+  }
   
+  .strategy-small-view {
+    width: 100px; 
+    height: 100px; 
+    position: relative;
+    border: 1px solid #ccc; 
+    border-radius: 10px;
+    overflow: hidden; 
+  }
+  
+  .strategy-small-view img {
+    width: 100%;
+    height: auto; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+  }
+
+  .items-list {
+    display: flex; 
+    gap: 10px; 
+    padding: 10px;
+    justify-content: center; 
+    align-items: center; 
+  }
+  
+  .grenade-items img {
+    width: 50px; 
+    cursor: pointer; 
+    margin: 5px;
+  }

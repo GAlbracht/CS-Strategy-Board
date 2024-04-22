@@ -15,6 +15,7 @@ function OverpassPage() {
     { id: 'smoke', name: 'Smoke', imageUrl: '/images/smoke.png' },
     { id: 'molotov', name: 'Molotov', imageUrl: '/images/molotov.webp' },
     { id: 'flashbang', name: 'Flashbang', imageUrl: '/images/flashbang.webp' },
+    { id: 'grenade', name: 'HE Grenade', imageUrl: '/images/grenade.webp' }
   ];
 
   useEffect(() => {
@@ -72,8 +73,13 @@ function OverpassPage() {
   };
 
   const saveStrategy = async () => {
+    const strategyName = prompt('Enter a name for this strategy:');
+    if (!strategyName) {
+      return;
+    }
     try {
       await axios.post('https://cs-strategy-board-0b3c449c0c46.herokuapp.com/strategies', {
+        name: strategyName,
         mapId: map._id,
         userId: '6625c05188e7ff889da17cb6',
         tactics: droppedItems.map(item => ({
@@ -107,7 +113,7 @@ function OverpassPage() {
       <div className="container">
         <div className="map">
           <div className="drop-zone" ref={dropZoneRef} onDrop={handleDrop} onDragOver={handleDragOver}>
-            <img src={map.imageUrl} alt={map.name} style={{ width: '100%' }} />
+            {map && <img src={map.imageUrl} alt={map.name} style={{ width: '100%' }} />}
             {droppedItems.map((item, index) => (
               <img key={index} src={item.imageUrl} alt={item.name} draggable
                 style={{ position: 'absolute', left: `${item.x}px`, top: `${item.y}px`, width: '50px' }} />
@@ -129,8 +135,8 @@ function OverpassPage() {
                 <img key={index} src={tactic.imageUrl} alt={tactic.name}
                   style={{
                     position: 'absolute',
-                    left: `${tactic.position?.x || 0}px`,
-                    top: `${tactic.position?.y || 0}px`,
+                    left: `${tactic.position.x}px`,
+                    top: `${tactic.position.y}px`,
                     width: '10px'
                   }}
                 />

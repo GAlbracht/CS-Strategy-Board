@@ -10,6 +10,7 @@ const tacticItemSchema = new mongoose.Schema({
 });
 
 const strategySchema = new mongoose.Schema({
+    name: { type: String, required: true },
     mapId: { type: mongoose.Schema.Types.ObjectId, ref: 'Map', required: true },
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     tactics: [tacticItemSchema],
