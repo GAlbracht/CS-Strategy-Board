@@ -7,7 +7,7 @@ const router = express.Router();
 
 // Create a new strategy and link it to a map
 router.post('/strategies', async (req, res) => {
-    console.log("Received strategy:", req.body);
+    console.log("Received strategy:", JSON.stringify(req.body, null, 2));
     const session = await mongoose.startSession();
     session.startTransaction();
     try {
