@@ -174,30 +174,38 @@ nav ul li a:hover {
   
   .strategies-display {
     display: flex;
-    flex-wrap: wrap; 
-    justify-content: flex-start; 
-    align-items: center; 
-    gap: 10px; 
-    margin-top: 20px; 
-  }
-  
-  .strategy-small-view {
-    width: 100px; 
-    height: 100px; 
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: start; /* Aligns items to the start of the flex container */
+    margin-top: 20px;
+}
+
+.strategy-small-view {
+    cursor: pointer;
     position: relative;
-    border: 1px solid #ccc; 
-    border-radius: 10px;
-    overflow: hidden; 
-  }
-  
-  .strategy-small-view img {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border: 2px solid #ccc; /* Optional: adds a border */
+    border-radius: 5px; /* Optional: rounds corners */
+}
+
+.strategy-small-view img {
     width: 100%;
-    height: auto; 
+    height: 100%;
+    object-fit: cover;
+}
+
+.strategy-label {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
-  }
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    padding: 2px 0;
+}
 
   .items-list {
     display: flex; 

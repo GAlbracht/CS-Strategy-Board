@@ -47,4 +47,22 @@ router.get('/maps/:mapId/strategies', async (req, res) => {
     }
 });
 
+// PUT route to update an existing strategy
+router.put('/strategies/:strategyId', async (req, res) => {
+    const { strategyId } = req.params;
+    try {
+        const strategy = await Strategy.findById(strategyId);
+        if (!strategy) {
+            return res.status(404).send('Strategy not found');
+        }
+
+        Object.assign(strategy, req.body);
+        await strategy.save();
+
+        res.status(200).json({ strategy, message: 'Strategy updated successfully!' });
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to update strategy', error: error.message });
+    }
+});
+
 export default router;

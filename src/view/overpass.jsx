@@ -131,6 +131,7 @@ function OverpassPage() {
           {strategies.map((strategy, idx) => (
             <div key={idx} className="strategy-small-view" onClick={() => handleDisplayStrategy(strategy)}>
               <img src={map.imageUrl} alt={map.name} style={{ width: '100px', height: '100px' }} />
+              <div classnme="strategy-name">{strategy.name}</div>
               {strategy.tactics.map((tactic, index) => (
                 <img key={index} src={tactic.imageUrl} alt={tactic.name}
                   style={{
