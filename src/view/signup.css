@@ -76,3 +76,10 @@ nav ul li a {
 nav ul li a:hover {
     background: rgba(255, 255, 255, 0.6);
 }
+
+nav img {
+    width: auto;
+    height: 60px;
+    float:left;
+    
+}
