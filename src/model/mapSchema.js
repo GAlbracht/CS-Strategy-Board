@@ -4,7 +4,7 @@ const mapSchema = new mongoose.Schema({
     name: { type: String, required: true },
     imageUrl: { type: String, required: true },
     description: { type: String },
-    strategies: [{ type: Schema.types.ObjectId, ref: 'Strategy'}]
+    strategies: [{ type: mongoose.Schema.types.ObjectId, ref: 'Strategy'}]
 });
 
 const Map = mongoose.model('Map', mapSchema);
