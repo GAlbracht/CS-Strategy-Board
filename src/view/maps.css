@@ -1,8 +1,11 @@
 body {
     font-family: 'Arial', sans-serif;
-    background: #43C6AC; 
-    background: -webkit-linear-gradient( #191654, #43C6AC);  
-    background: linear-gradient( #191654, #43C6AC); 
+    background: #43C6AC;
+    background: -webkit-linear-gradient(#191654, #43C6AC);
+    background: linear-gradient(#191654, #43C6AC);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .gallery img:hover,
 .gallery figcaption:hover {
@@ -77,6 +80,14 @@ body {
 .map-subsection img {
     width: 100%;
     height: auto;
+}
+
+.map-entry img, .map-subsection img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover; 
+    display: block;
+    margin: auto; 
 }
 
 .map-subsection figcaption {
