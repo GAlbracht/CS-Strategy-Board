@@ -8,13 +8,13 @@ const Maps = () => {
     return (
       <div>
         <nav>
+        <Link to="/maps"><img src='images/logo.webp' alt="Maps" /></Link>
           <ul>
-            <li><Link to="/maps"><img src='images/logo.webp' alt="Logo" /></Link></li>
             <li><Link to="/home">Home</Link></li>
             <li><Link to="/maps">Map Directory</Link></li>
             <li><Link to="/signup">Signup</Link></li>
             {/* if admin */}
-            {isAdmin && <li><Link to="/admin-upload"><img src='Upload' /></Link></li>}
+            {isAdmin && <li><Link to="/admin-upload">Upload</Link></li>}
           </ul>
         </nav>
         <div className="maps-overview">

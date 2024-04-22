@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './signup.css';
 
 function AdminPage() {
@@ -26,6 +27,14 @@ function AdminPage() {
 
     return (
         <div>
+            <nav className="navigation">
+            <li><Link to="/maps"><img src='images/logo.webp' alt="Logo" /></Link></li>
+                <ul>
+                    <li><Link to="/home">Home</Link></li>
+                    <li><Link to="/maps">Map Directory</Link></li>
+                    <li><Link to="/signup">Signup</Link></li>
+                </ul>
+            </nav>
             <h1>Submit New Map Tactic</h1>
             <form onSubmit={handleSubmit}>
                 <div>

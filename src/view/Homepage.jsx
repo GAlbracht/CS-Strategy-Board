@@ -31,8 +31,8 @@ const HomePage = () => {
                 <title>CS Strategy Board</title>
             </header>
             <nav className="navigation">
+            <li><Link to="/maps"><img src='images/logo.webp' alt="Logo" /></Link></li>
                 <ul>
-                    <li><Link to="/maps"><img src='images/logo.webp' alt="Logo" /></Link></li>
                     <li><Link to="/home">Home</Link></li>
                     <li><Link to="/maps">Map Directory</Link></li>
                     <li><Link to="/signup">Signup</Link></li>

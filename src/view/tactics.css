@@ -1,7 +1,7 @@
 .video {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    align-items: center; 
     position: relative;
     padding-top: 5%;
     margin: 0;
@@ -22,3 +22,33 @@
     border-radius: 10px;
 
 }
+
+
+.like-button {
+    padding: 8px 16px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .like-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  .like-button:active {
+    transform: scale(0.95);
+  }
+  
+  .like-button.liked {
+    background-color: #dc3545;
+  }
+  
+  .like-button.liked:hover {
+    background-color: #c82333;
+  }
+  
