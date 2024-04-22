@@ -68,7 +68,7 @@ function OverpassPage() {
   const handleDisplayStrategy = (strategy) => {
     setDroppedItems(strategy.tactics.map(tactic => ({
       ...tactic,
-      id: Date.now() + Math.random() // Ensures a unique key for each item
+      id: Date.now() + Math.random() 
     })));
   };
 
@@ -89,7 +89,7 @@ function OverpassPage() {
         }))
       });
       alert('Strategy saved successfully!');
-      fetchStrategies(map._id);  // Refresh the strategies list
+      fetchStrategies(map._id); 
     } catch (error) {
       console.error('Failed to save strategy:', error);
       alert('Failed to save strategy');

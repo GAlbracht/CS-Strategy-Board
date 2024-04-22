@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';  // Import useNavigate
+import { Link, useNavigate } from 'react-router-dom';  
 import axios from 'axios';
 import './signup.css';
 
 const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();  // Initialize the navigate function
+    const navigate = useNavigate(); 
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -17,29 +17,29 @@ const Signup = () => {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent the default form submit action
-        console.log("Attempting to submit form", { email, password }); // Log the values to be sent
+        e.preventDefault(); 
+        console.log("Attempting to submit form", { email, password }); 
     
         try {
             const response = await axios.post('https://cs-strategy-board-0b3c449c0c46.herokuapp.com/register', { email, password });
-            console.log("Response received", response.data); // Log the response from the server
+            console.log("Response received", response.data); 
     
-            // Optionally check response status or data before redirecting
+            
             if (response.status === 201) {
                 console.log("Signup successful, navigating to home");
-                navigate('/home'); // Navigate on success
+                navigate('/home'); 
             } else {
                 console.error("Unexpected response status:", response.status);
             }
         } catch (error) {
             if (error.response) {
-                // Server responded with a status outside 2xx and provided an error
+                
                 console.error("Signup error response:", error.response.data);
             } else if (error.request) {
-                // The request was made but no response was received
+               
                 console.error("Signup error request not responded:", error.request);
             } else {
-                // Something happened in setting up the request that triggered an error
+               
                 console.error("Signup error message:", error.message);
             }
         }
