@@ -1,4 +1,5 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import Strategy from '../model/strategySchema.js'; 
 import Map from '../model/mapSchema.js';
 
@@ -6,6 +7,7 @@ const router = express.Router();
 
 // Create a new strategy and link it to a map
 router.post('/strategies', async (req, res) => {
+    console.log("Received strategy:", req.body);
     const session = await mongoose.startSession();
     session.startTransaction();
     try {

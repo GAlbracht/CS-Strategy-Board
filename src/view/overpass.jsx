@@ -10,6 +10,13 @@ function OverpassPage() {
   const [map, setMap] = useState(null);
   const [droppedItems, setDroppedItems] = useState([]);
 
+  // Define grenade items for dragging
+  const grenadeItems = [
+    { id: 'smoke', name: 'Smoke', imageUrl: '/images/smoke.png' },
+    { id: 'molotov', name: 'Molotov', imageUrl: '/images/molotov.webp' },
+    { id: 'flashbang', name: 'Flashbang', imageUrl: '/images/flashbang.webp' },
+  ];
+
   useEffect(() => {
     if (mapName) {
       axios.get(`https://cs-strategy-board-0b3c449c0c46.herokuapp.com/maps/name/${mapName}`)
@@ -24,20 +31,18 @@ function OverpassPage() {
   }, [mapName]);
 
   const handleDragStart = (event, item) => {
-    const objectToTransfer = { ...item };
-    event.dataTransfer.setData('application/reactflow', JSON.stringify(objectToTransfer));
+    event.dataTransfer.setData('application/reactflow', JSON.stringify(item));
     event.dataTransfer.effectAllowed = 'move';
   };
 
   const handleDrop = (event) => {
     event.preventDefault();
-    const data = event.dataTransfer.getData('application/reactflow');
-    const item = JSON.parse(data);
+    const item = JSON.parse(event.dataTransfer.getData('application/reactflow'));
     const rect = dropZoneRef.current.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
 
-    const newItem = { ...item, x, y, id: Date.now() };
+    const newItem = { ...item, x, y, id: Date.now() }; // Use a more robust ID generation in production
     setDroppedItems(currentItems => [...currentItems, newItem]);
   };
 
@@ -47,16 +52,28 @@ function OverpassPage() {
   };
 
   const saveStrategy = async () => {
+    if (!map || droppedItems.length === 0) {
+        alert("No items to save or map not loaded");
+        return;
+    }
+
     try {
-      const response = await axios.post('https://cs-strategy-board-0b3c449c0c46.herokuapp.com/strategies', {
-        mapId: map.id,
-        items: droppedItems,
-      });
+      const payload = {
+        mapId: map._id, // Assuming map object has _id as fetched from the backend
+        userId: 'yourUserId', // Make sure to replace with actual logic to get userId
+        tactics: droppedItems.map(item => ({
+          name: item.name,
+          imageUrl: item.imageUrl,
+          position: { x: item.x, y: item.y }
+        }))
+      };
+
+      const response = await axios.post('https://cs-strategy-board-0b3c449c0c46.herokuapp.com/strategies', payload);
       alert('Strategy saved successfully!');
-      navigate('/strategies');
+      navigate('/strategies'); // Assuming you have a route setup to view strategies
     } catch (error) {
       console.error('Failed to save strategy:', error);
-      alert('Failed to save strategy');
+      alert('Failed to save strategy: ' + error.response?.data?.message || error.message);
     }
   };
 
@@ -77,12 +94,19 @@ function OverpassPage() {
       <div className="container">
         <div className="map">
           <div className="drop-zone" ref={dropZoneRef} onDrop={handleDrop} onDragOver={handleDragOver}>
-            <img src={map.imageUrl} alt={map.name} />
+            <img src={map.imageUrl} alt={map.name} style={{ width: '100%' }} />
             {droppedItems.map((item) => (
               <img key={item.id} src={item.imageUrl} alt={item.name} draggable
-                style={{ position: 'absolute', left: item.x, top: item.y, width: '50px' }} />
+                style={{ position: 'absolute', left: `${item.x}px`, top: `${item.y}px`, width: '50px' }} />
             ))}
           </div>
+        </div>
+        <div className="grenade-items">
+          {grenadeItems.map(item => (
+            <img key={item.id} src={item.imageUrl} alt={item.name} draggable
+              onDragStart={(event) => handleDragStart(event, item)}
+              style={{ width: '50px', margin: '10px' }} />
+          ))}
         </div>
         <button onClick={saveStrategy}>Save Strategy</button>
       </div>
