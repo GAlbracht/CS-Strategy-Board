@@ -18,7 +18,7 @@ const HomePage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('https://cs-strategy-board-0b3c449c0c46.herokuapp.com/login', { email, password }, { withCredentials: true });
+            const response = await axios.post('https://cs-strategy-board-0b3c449c0c46.herokuapp.com/login', { email, password });
             console.log(response.data); 
         } catch (error) {
             console.error('Login error:', error.response.data);
