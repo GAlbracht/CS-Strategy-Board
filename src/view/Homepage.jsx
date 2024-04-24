@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Homepage.css';
 
 const HomePage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -20,6 +21,7 @@ const HomePage = () => {
         try {
             const response = await axios.post('https://cs-strategy-board-0b3c449c0c46.herokuapp.com/login', { email, password });
             console.log(response.data); 
+            navigate('/maps');
         } catch (error) {
             console.error('Login error:', error.response.data);
         }
